@@ -14,8 +14,14 @@ function createServer() {
       console.error({ message: 'Invalid request URL' });
     }
 
-    const parts = reqUrl.pathname.split('/').filter((item) => item !== '');
-    const query = Object.fromEntries(reqUrl.searchParams.entries());
+    const parts =
+      reqUrl instanceof URL
+        ? reqUrl.pathname.split('/').filter((item) => item !== '')
+        : [];
+    const query =
+      reqUrl instanceof URL
+        ? Object.fromEntries(reqUrl.searchParams.entries())
+        : {};
 
     result = { parts, query };
 
