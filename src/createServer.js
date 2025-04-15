@@ -6,7 +6,7 @@ const http = require('node:http');
 function createServer() {
   const server = http.createServer((req, res) => {
     let result = {};
-    let reqUrl;
+    let reqUrl = '';
 
     try {
       reqUrl = new URL(req.url, 'http://localhost:5701');
